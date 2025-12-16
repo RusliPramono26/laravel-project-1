@@ -43,3 +43,13 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - php_laravel
+
+  node:
+    image: node:22
+    container_name: laravel_node
+    working_dir: /var/www/src
+    volumes:
+      - ./src:/var/www/src
+    command: npm run dev
+    ports:
+      - "5173:5173"
